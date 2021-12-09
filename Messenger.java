@@ -1,3 +1,8 @@
+/** 
+//  TODO:   change methods of Messages and Contacts into class ones
+            make a method which controlls whether the Message or Contact exist
+*/
+
 package com.example.javachallenge2;
 
 import java.util.Scanner;
