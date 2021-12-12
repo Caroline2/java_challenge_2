@@ -1,6 +1,6 @@
 /** 
-//  TODO:   change methods of Messages and Contacts into class ones
-            make a method which controlls whether the Message or Contact exist
+ *   TODO:  change methods of Messages and Contacts into class ones
+ *          make a method which controlls whether the Message or Contact exist
 */
 
 package com.example.javachallenge2;
@@ -110,6 +110,30 @@ public class Messenger {
     }
 
     public void addContact(){
+        /**
+         *  TODO: scanning!
+         *        Contact resolving as a type!
+         */
+        System.out.println("What is the name of Your new contact?");
+        System.out.println("What is the number of Your new contact?");
+        System.out.println("Write Your answers write your answers" +
+                            "on the next lines (first line name, " +
+                            "second line number)");
+        String cName = sc.nextLine();
+        int cNumber = sc.nextInt();
+
+        try {
+            Thread.sleep(6000);
+        } catch (Exception e) {
+            System.out.println("Sleeping the thread wasn't successful");
+        }
+
+        /* Contact newbie = new Contact(cName, cNumber);*/
+
+        System.out.println("The contact " + cName + " with the number " + cNumber +
+                             " was successfully added!");
+
+        /*newbie.showContacts();*/
 
     }
 
