@@ -1,30 +1,21 @@
 package com.example.javachallenge2;
 
 public class Message {
-    private String sender;
     private String receiver;
     private String text;
+    private int id;
 
-
-    public Message(String sender, String receiver, String text) {
-        this.sender = sender;
+    public Message(String receiver, String text, int id) {
         this.receiver = receiver;
         this.text = text;
-
+        this.id = id;
     }
 
-    /**
-     * @return String return the sender
-     */
-    public String getSender() {
-        return sender;
-    }
-
-    /**
-     * @param sender the sender to set
-     */
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void getMessageDetails() {
+        System.out.println("Receiver name: " + receiver +
+        "\nMessage: " + text +
+        "\nMessage ID: " + id);
+        
     }
 
     /**
@@ -53,6 +44,20 @@ public class Message {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    /**
+     * @return String return the id
+     */
+    public String getid() {
+        return id;
+    }
+
+    /**
+     * @param text the id to set
+     */
+    public void setid(int id) {
+        this.id = id;
     }
 
 }

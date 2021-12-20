@@ -1,8 +1,3 @@
-/** 
- *   TODO:  change methods of Messages and Contacts into class ones
- *          make a method which controlls whether the Message or Contact exist
-*/
-
 package com.example.javachallenge2;
 
 import java.util.Scanner;
@@ -89,7 +84,7 @@ public class Messenger {
                 showContacts();
                 break;
             case '2': chosen = 0;
-                addContact();
+                addContact("Lojza", "lojza@gmail.com", 123456789);
                 break;
             case '3': chosen = 0;
                 searchContact();
@@ -105,38 +100,15 @@ public class Messenger {
         return chosen;
     }
 
-    public void showContacts(){
+    public void addContact(String name, String email, int number){
+        Contact newContact = new Contact(name, email, number);
+        newContact.getContactDetails();
+    }
     
+    public void showContacts(){
+        System.out.println("Contacts");
     }
-
-    public void addContact(){
-        /**
-         *  TODO: scanning!
-         *        Contact resolving as a type!
-         */
-        System.out.println("What is the name of Your new contact?");
-        System.out.println("What is the number of Your new contact?");
-        System.out.println("Write Your answers write your answers" +
-                            "on the next lines (first line name, " +
-                            "second line number)");
-        String cName = sc.nextLine();
-        int cNumber = sc.nextInt();
-
-        try {
-            Thread.sleep(6000);
-        } catch (Exception e) {
-            System.out.println("Sleeping the thread wasn't successful");
-        }
-
-        /* Contact newbie = new Contact(cName, cNumber);*/
-
-        System.out.println("The contact " + cName + " with the number " + cNumber +
-                             " was successfully added!");
-
-        /*newbie.showContacts();*/
-
-    }
-
+    
     public void searchContact(){
 
     }
