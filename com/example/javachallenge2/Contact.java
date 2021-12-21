@@ -6,25 +6,26 @@ public class Contact {
     private String name;
     private String email;
     private int number;
-    private ArrayList messages;
+    private ArrayList<Message> messages;
 
 
-    public Contact(String name, String email, int number, ArrayList messages) {
+    public Contact(String name, String email, int number, ArrayList<Message> messages) {
         this.name = name;
         this.email = email;
         this.number = number;
-        this.messages = messages;
+        this.setMessages(messages);
     }
+
 
     public Contact(String name, String email, int number) {
         this.name = name;
         this.email = email;
         this.number = number;
-        this.messages = new ArrayList<>();
+        this.setMessages(new ArrayList<>());
     }
 
     public void getContactDetails(){
-        System.out.println("Contact name: " + contact +
+        System.out.println("Contact name: " + name +
         "\nEmail: " + email +
         "\nNumber: " + number);
     }
@@ -41,11 +42,19 @@ public class Contact {
         this.name = name;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return this.number;
     }
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 }

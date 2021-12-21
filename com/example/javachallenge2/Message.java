@@ -49,7 +49,7 @@ public class Message {
     /**
      * @return String return the id
      */
-    public String getid() {
+    public int getid() {
         return id;
     }
 

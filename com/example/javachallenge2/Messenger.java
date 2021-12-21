@@ -1,12 +1,13 @@
 package com.example.javachallenge2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.naming.ldap.ControlFactory;
 
 public class Messenger {
+    
     private String owner;
-
+    public static ArrayList<Contact> contacts = new ArrayList<>();
     public static Scanner sc = new Scanner(System.in);
 
     public Messenger(String owner) {
