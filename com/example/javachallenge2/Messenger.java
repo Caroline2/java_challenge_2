@@ -27,14 +27,14 @@ public class Messenger {
         int chosen = 0;
 
         do{
-            System.out.println("Which action do You want to proceed?");
+            System.out.println("\nWhich action do You want to proceed?");
 
             System.out.println("1. Manage contacts");
             System.out.println("2. Messages");
             System.out.println("3. Quit");
 
             char valid = sc.next().charAt(0);
-            System.out.println("You chose "+ valid + "!");
+            System.out.println("You chose "+ valid + "!\n");
             chosen = check(valid);
 
         }while(chosen == 1);
@@ -62,7 +62,7 @@ public class Messenger {
         int result = 0;
 
         do{
-            System.out.println("Which action do You want to proceed?");
+            System.out.println("\nWhich action do You want to proceed?");
 
             System.out.println("1. Show all contacts");
             System.out.println("2. Add a new contact");
@@ -71,7 +71,7 @@ public class Messenger {
             System.out.println("5. Go back to the previous menu");
 
             char contactsAction = sc.next().charAt(0);
-            System.out.println("You chose "+ contactsAction + "!");
+            System.out.println("You chose "+ contactsAction + "!\n");
             result = checkContact(contactsAction);
 
         }while(result == 1);
@@ -103,11 +103,24 @@ public class Messenger {
 
     public void addContact(String name, String email, int number){
         Contact newContact = new Contact(name, email, number);
+        contacts.add(newContact);
+        System.out.println("Added new contact:");
         newContact.getContactDetails();
+        manageContacts();
+
     }
     
     public void showContacts(){
-        System.out.println("Contacts");
+        if (contacts.size() == 0){
+            System.out.println("You saved no contacts yet.");
+        }
+        else{
+            for (int i = 0; i < contacts.size(); i++){
+                System.out.println("\n" + (i + 1) + ". Contact:");
+                contacts.get(i).getContactDetails();
+            }
+        }
+        manageContacts();
     }
     
     public void searchContact(){
@@ -121,14 +134,14 @@ public class Messenger {
     public void messages(){
         int sure = 0;
         do{
-            System.out.println("Which action do You want to proceed?");
+            System.out.println("\nWhich action do You want to proceed?");
 
             System.out.println("1. See the list of all messages");
             System.out.println("2. Send a new message");
             System.out.println("3. Go back to the previous menu");
 
             char messagesAction = sc.next().charAt(0);
-            System.out.println("You chose "+ messagesAction + "!");
+            System.out.println("You chose "+ messagesAction + "!\n");
             sure = checkMessage(messagesAction);
 
         }while(sure == 1);
@@ -161,7 +174,8 @@ public class Messenger {
     }
 
     public void quit(){
-        System.out.println("Thanks for using the app. \nSee ya next time!");
+        System.out.println("Thanks for using the app.\n" +
+        "See ya next time with a new contact list!");
     }
 
     public String getOwner() {
