@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Contact {
     private String name;
     private String email;
-    private int number;
+    private String number;
     private ArrayList<Message> messages;
 
 
-    public Contact(String name, String email, int number, ArrayList<Message> messages) {
+    public Contact(String name, String email, String number, ArrayList<Message> messages) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -17,7 +17,7 @@ public class Contact {
     }
 
 
-    public Contact(String name, String email, int number) {
+    public Contact(String name, String email, String number) {
         this.name = name;
         this.email = email;
         this.number = number;
@@ -25,7 +25,7 @@ public class Contact {
     }
 
     public void getContactDetails(){
-        System.out.println("Contact name: " + name +
+        System.out.println("Contact name: " + name + 
         "\nEmail: " + email +
         "\nNumber: " + number);
     }
@@ -42,11 +42,11 @@ public class Contact {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return this.number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

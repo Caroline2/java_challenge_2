@@ -85,7 +85,7 @@ public class Messenger {
                 showContacts();
                 break;
             case '2': chosen = 0;
-                addContact("Lojza", "lojza@gmail.com", 123456789);
+                addContact();
                 break;
             case '3': chosen = 0;
                 searchContact();
@@ -101,13 +101,35 @@ public class Messenger {
         return chosen;
     }
 
-    public void addContact(String name, String email, int number){
-        Contact newContact = new Contact(name, email, number);
-        contacts.add(newContact);
-        System.out.println("Added new contact:");
-        newContact.getContactDetails();
-        manageContacts();
+    public void addContact(){
+        System.out.println("What is the name of the new contact?");
+        String name = sc.next();
+        System.out.println("What is the email of " + name + "?");
+        String email = sc.next();
+        System.out.println("What is the number of " + name + "? Don't forget the phone preselection.");
+        String number = sc.next();
 
+        if (duplicateContact(name) == false){
+            Contact newContact = new Contact(name, email, number);
+            contacts.add(newContact);
+
+            System.out.println("Added new contact:");
+            newContact.getContactDetails();
+            manageContacts();
+        }
+        else {
+            System.out.println("You already have a contact with the name " + name + "!");
+            manageContacts();
+        }
+    }
+
+    public boolean duplicateContact(String name){
+        for (Contact c: contacts){
+            if (c.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
     
     public void showContacts(){
@@ -124,10 +146,48 @@ public class Messenger {
     }
     
     public void searchContact(){
+        System.out.println("Which contact do you want to search? Enter the name.");
+        String name = sc.next();
+        Contact searchedContact;
+
+        for (int j = 0; j < contacts.size(); j++){
+            if (name.equals(contacts.get(j).getName())) {
+                searchedContact = contacts.get(j);
+                searchedContact.getContactDetails();
+                manageContacts();
+            }
+            System.out.println("You do not have a contact with the name " + name + "!");
+            manageContacts();
+        }
 
     }
 
     public void deleteContact(){
+        System.out.println("Which contact do you want to delete? Enter the name.");
+        String name = sc.next();
+        Contact deleteContact;
+
+        for (int k = 0; k < contacts.size(); k++){
+            if (name.equals(contacts.get(k).getName())) {
+                deleteContact = contacts.get(k);
+
+                System.out.println("Do you really want to delete this contact? (type YES if so)");
+                deleteContact.getContactDetails();
+
+                String confirmation = sc.next();
+
+                if (confirmation.equals("YES")){
+                    contacts.remove(contacts.get(k));
+                    System.out.println("The contact with the name " + name + " was deleted.");
+                }
+                else{
+                    System.out.println("The contact with the name " + name + " wasn't deleted.");
+                }
+                manageContacts();
+            }
+            System.out.println("You do not have a contact with the name " + name + "!");
+            manageContacts();
+        }
 
     }
 
