@@ -3,18 +3,15 @@ package com.example.javachallenge2;
 public class Message {
     private String receiver;
     private String text;
-    private int id;
 
-    public Message(String receiver, String text, int id) {
+    public Message(String receiver, String text) {
         this.receiver = receiver;
         this.text = text;
-        this.id = id;
     }
 
     public void getMessageDetails() {
         System.out.println("Receiver name: " + receiver +
-        "\nMessage: " + text +
-        "\nMessage ID: " + id);
+        "\nMessage: " + text);
         
     }
 
@@ -44,20 +41,6 @@ public class Message {
      */
     public void setText(String text) {
         this.text = text;
-    }
-
-    /**
-     * @return String return the id
-     */
-    public int getid() {
-        return id;
-    }
-
-    /**
-     * @param text the id to set
-     */
-    public void setid(int id) {
-        this.id = id;
     }
 
 }

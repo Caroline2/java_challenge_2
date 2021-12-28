@@ -8,6 +8,7 @@ public class Messenger {
     
     private String owner;
     public static ArrayList<Contact> contacts = new ArrayList<>();
+    public static ArrayList<Message> messages = new ArrayList<>();
     public static Scanner sc = new Scanner(System.in);
 
     public Messenger(String owner) {
@@ -103,11 +104,11 @@ public class Messenger {
 
     public void addContact(){
         System.out.println("What is the name of the new contact?");
-        String name = sc.next();
+        String name = sc.nextLine();
         System.out.println("What is the email of " + name + "?");
         String email = sc.next();
         System.out.println("What is the number of " + name + "? Don't forget the phone preselection.");
-        String number = sc.next();
+        String number = sc.nextLine();
 
         if (duplicateContact(name) == false){
             Contact newContact = new Contact(name, email, number);
@@ -147,7 +148,7 @@ public class Messenger {
     
     public void searchContact(){
         System.out.println("Which contact do you want to search? Enter the name.");
-        String name = sc.next();
+        String name = sc.nextLine();
         Contact searchedContact;
 
         for (int j = 0; j < contacts.size(); j++){
@@ -164,7 +165,7 @@ public class Messenger {
 
     public void deleteContact(){
         System.out.println("Which contact do you want to delete? Enter the name.");
-        String name = sc.next();
+        String name = sc.nextLine();
         Contact deleteContact;
 
         for (int k = 0; k < contacts.size(); k++){
@@ -228,10 +229,55 @@ public class Messenger {
     }
 
     public void showMessages(){
-
+        if (messages.size() == 0){
+            System.out.println("You haven't sent any messages yet.");
+        }
+        else{
+            for (int i = 0; i < messages.size(); i++){
+                System.out.println("\n" + (i + 1) + ". Message:");
+                messages.get(i).getMessageDetails();
+            }
+        }
+        messages();
     }
 
     public void newMessage(){
+        System.out.println("Who is the receiver of your message?");
+        String receiver = sc.nextLine();
+        String text;
+        Contact receiverContact;
+        Message newMessage;
+        ArrayList<Message> receiverMessages;
+
+        if (contacts.size() != 0){
+            for (int k = 0; k < contacts.size(); k++){
+                if (receiver.equals(contacts.get(k).getName())) {
+                    receiverContact = contacts.get(k);
+
+                    System.out.println("What are you going to say, what is your message?");
+                    text = sc.nextLine();
+
+                    newMessage = new Message(receiver, text);
+
+                    messages.add(newMessage);
+
+                    receiverMessages = receiverContact.getMessages();
+                    receiverMessages.add(newMessage);
+                    receiverContact.setMessages(receiverMessages);
+
+                    System.out.println("The message to " + receiver + " was sent!");
+                    messages();
+                }
+                else{
+                    System.out.println("You do not have a contact with the name " + receiver + "!");
+                    messages();
+                }
+            }
+        }
+        else{
+            System.out.println("You do not have any contact yet so you can't send any messages.");
+            manageContacts();
+        }
 
     }
 
