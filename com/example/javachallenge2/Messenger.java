@@ -185,8 +185,10 @@ public class Messenger {
                 }
                 manageContacts();
             }
-            System.out.println("You do not have a contact with the name " + name + "!");
-            manageContacts();
+            else{
+                System.out.println("You do not have a contact with the name " + name + "!");
+                manageContacts();
+            }
         }
 
     }
