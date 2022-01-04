@@ -106,7 +106,7 @@ public class Messenger {
         System.out.println("What is the name of the new contact?");
         String name = sc.nextLine();
         System.out.println("What is the email of " + name + "?");
-        String email = sc.next();
+        String email = sc.nextLine();
         System.out.println("What is the number of " + name + "? Don't forget the phone preselection.");
         String number = sc.nextLine();
 
