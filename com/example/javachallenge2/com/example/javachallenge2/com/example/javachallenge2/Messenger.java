@@ -1,15 +1,12 @@
 package com.example.javachallenge2;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 
 public class Messenger {
     
     private String owner;
     public static ArrayList<Contact> contacts = new ArrayList<>();
     public static ArrayList<Message> messages = new ArrayList<>();
-    public static Scanner sc = new Scanner(System.in);
 
     public Messenger(String owner) {
         this.owner = owner;
@@ -34,24 +31,24 @@ public class Messenger {
             System.out.println("2. Messages");
             System.out.println("3. Quit");
 
-            char valid = sc.next().charAt(0);
+            String valid = System.console().readLine();
             System.out.println("You chose "+ valid + "!\n");
             chosen = check(valid);
 
         }while(chosen == 1);
     }
 
-    public int check(char valid){
+    public int check(String valid){
         int chosen = 1;
 
         switch (valid){
-            case '1': chosen = 0;
+            case "1": chosen = 0;
                 manageContacts();
                 break;
-            case '2': chosen = 0;
+            case "2": chosen = 0;
                 messages();
                 break;
-            case '3': chosen = 0;
+            case "3": chosen = 0;
                 quit();
                 break;
             default: chosen = 1;            
@@ -71,30 +68,30 @@ public class Messenger {
             System.out.println("4. Delete a contact");
             System.out.println("5. Go back to the previous menu");
 
-            char contactsAction = sc.next().charAt(0);
+            String contactsAction = System.console().readLine();
             System.out.println("You chose "+ contactsAction + "!\n");
             result = checkContact(contactsAction);
 
         }while(result == 1);
     }
 
-    public int checkContact(char contactsAction){
+    public int checkContact(String contactsAction){
         int chosen = 1;
 
         switch (contactsAction){
-            case '1': chosen = 0;
+            case "1": chosen = 0;
                 showContacts();
                 break;
-            case '2': chosen = 0;
+            case "2": chosen = 0;
                 addContact();
                 break;
-            case '3': chosen = 0;
+            case "3": chosen = 0;
                 searchContact();
                 break;
-            case '4': chosen = 0;
+            case "4": chosen = 0;
                 deleteContact();
                 break;
-            case '5': chosen = 0;
+            case "5": chosen = 0;
                 goBack();
                 break;
             default: chosen = 1;            
@@ -104,11 +101,11 @@ public class Messenger {
 
     public void addContact(){
         System.out.println("What is the name of the new contact?");
-        String name = sc.nextLine();
+        String name = System.console().readLine();
         System.out.println("What is the email of " + name + "?");
-        String email = sc.nextLine();
+        String email = System.console().readLine();
         System.out.println("What is the number of " + name + "? Don't forget the phone preselection.");
-        String number = sc.nextLine();
+        String number = System.console().readLine();
 
         if (duplicateContact(name) == false){
             Contact newContact = new Contact(name, email, number);
@@ -148,10 +145,11 @@ public class Messenger {
     
     public void searchContact(){
         System.out.println("Which contact do you want to search? Enter the name.");
-        String name = sc.nextLine();
+        String name = System.console().readLine();
         Contact searchedContact;
 
         for (int j = 0; j < contacts.size(); j++){
+            System.out.println("index " +j + "\n name: " + name);
             if (name.equals(contacts.get(j).getName())) {
                 searchedContact = contacts.get(j);
                 searchedContact.getContactDetails();
@@ -165,7 +163,7 @@ public class Messenger {
 
     public void deleteContact(){
         System.out.println("Which contact do you want to delete? Enter the name.");
-        String name = sc.nextLine();
+        String name = System.console().readLine();
         Contact deleteContact;
 
         for (int k = 0; k < contacts.size(); k++){
@@ -175,7 +173,7 @@ public class Messenger {
                 System.out.println("Do you really want to delete this contact? (type YES if so)");
                 deleteContact.getContactDetails();
 
-                String confirmation = sc.next();
+                String confirmation = System.console().readLine();
 
                 if (confirmation.equals("YES")){
                     contacts.remove(contacts.get(k));
@@ -203,24 +201,24 @@ public class Messenger {
             System.out.println("2. Send a new message");
             System.out.println("3. Go back to the previous menu");
 
-            char messagesAction = sc.next().charAt(0);
+            String messagesAction = System.console().readLine();
             System.out.println("You chose "+ messagesAction + "!\n");
             sure = checkMessage(messagesAction);
 
         }while(sure == 1);
     }
 
-    public int checkMessage(char messagesAction){
+    public int checkMessage(String messagesAction){
         int chosen = 1;
 
         switch (messagesAction){
-            case '1': chosen = 0;
+            case "1": chosen = 0;
                 showMessages();
                 break;
-            case '2': chosen = 0;
+            case "2": chosen = 0;
                 newMessage();
                 break;
-            case '3': chosen = 0;
+            case "3": chosen = 0;
                 goBack();
                 break;
             default: chosen = 1;            
@@ -243,7 +241,7 @@ public class Messenger {
 
     public void newMessage(){
         System.out.println("Who is the receiver of your message?");
-        String receiver = sc.nextLine();
+        String receiver = System.console().readLine();
         String text;
         Contact receiverContact;
         Message newMessage;
@@ -255,7 +253,7 @@ public class Messenger {
                     receiverContact = contacts.get(k);
 
                     System.out.println("What are you going to say, what is your message?");
-                    text = sc.nextLine();
+                    text = System.console().readLine();
 
                     newMessage = new Message(receiver, text);
 
