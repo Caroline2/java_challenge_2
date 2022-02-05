@@ -149,17 +149,22 @@ public class Messenger {
         Contact searchedContact;
 
         for (int j = 0; j < contacts.size(); j++){
-            System.out.println("index " +j + "\n name: " + name);
+
             if (name.equals(contacts.get(j).getName())) {
+
                 searchedContact = contacts.get(j);
                 searchedContact.getContactDetails();
+                name = "";
                 manageContacts();
             }
+        }
+        if (!name.equals("")){
             System.out.println("You do not have a contact with the name " + name + "!");
             manageContacts();
         }
 
     }
+
 
     public void deleteContact(){
         System.out.println("Which contact do you want to delete? Enter the name.");
