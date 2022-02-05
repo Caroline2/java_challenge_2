@@ -187,12 +187,15 @@ public class Messenger {
                 else{
                     System.out.println("The contact with the name " + name + " wasn't deleted.");
                 }
+                name = "";
                 manageContacts();
             }
-            else{
-                System.out.println("You do not have a contact with the name " + name + "!");
-                manageContacts();
-            }
+        }
+        if (!name.equals("")){
+
+            System.out.println("You do not have a contact with the name " + name + "!");
+            manageContacts();
+            
         }
 
     }
