@@ -1,6 +1,6 @@
 <h2>Java Challenge 2: Creating a contact manager</h2>
 
-<p>This is a repository for a simple closing challenge of a java tutorial before working with Android Studio. The app is supposed to create a temporary contact list/messenger with these functionalities:</p>
+<p>This is a repository for a simple closing challenge of a <a href="https://www.youtube.com/watch?v=fis26HvvDII">java tutorial</a> before working with Android Studio. The app is supposed to create a temporary contact list/messenger with these functionalities:</p>
 
 <ul>
     <li>Adding contacts & messages</li>
